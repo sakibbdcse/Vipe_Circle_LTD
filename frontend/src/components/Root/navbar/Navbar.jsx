@@ -1,20 +1,20 @@
 import React from 'react';
+import { useTheme } from '@mui/material/styles';
 import { styled, alpha } from '@mui/material/styles';
-import { AppBar, Badge, Box, IconButton, Toolbar, Typography, InputBase, Menu, MenuItem } from '@mui/material';
+import { AppBar, Badge, Box, IconButton, Toolbar, InputBase, Menu, MenuItem, } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import logo from '../../../assets/images/logo.svg';
-
-// Styled components for the search bar
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    backgroundColor: alpha(theme.palette.grey[300], 0.8), // Adjust for white navbar
     '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
+        backgroundColor: alpha(theme.palette.grey[400], 0.8),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
@@ -36,7 +36,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
+    color: theme.palette.text.primary,
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
@@ -49,6 +49,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Navbar = () => {
+    const theme = useTheme();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -148,15 +149,9 @@ const Navbar = () => {
 
     return (
         <>
-            <AppBar position="fixed">
-                <Toolbar>
-                    <Typography
-                        variant="img"
-                        component="div"
-                        sx={{ display: { xs: 'none', sm: 'block' } }}
-                    >
-                        <img src={logo} alt="Logo" style={{ height: 40, marginLeft: 50 }} />
-                    </Typography>
+            <AppBar position="fixed" style={{ backgroundColor: '#fff', color: theme.palette.text.primary, }}>
+                <Toolbar sx={{ justifyContent: 'space-between' }}>
+                    <Box component="img" src={logo} alt="Logo" sx={{ height: 40, marginLeft: 5 }} />
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />
@@ -166,7 +161,6 @@ const Navbar = () => {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
-                    <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="error">
@@ -193,17 +187,25 @@ const Navbar = () => {
                         >
                             <AccountCircle />
                         </IconButton>
+                        <IconButton
+                            size="large"
+                            edge="end"
+                            aria-label="toggle dark mode"
+                            color="inherit"
+                        >
+                            <DarkModeIcon />
+                        </IconButton>
                     </Box>
                     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
                             aria-label="show more"
-                            aria-controls={mobileMenuId}
                             aria-haspopup="true"
                             onClick={handleMobileMenuOpen}
                             color="inherit"
                         >
                             <MoreIcon />
+
                         </IconButton>
                     </Box>
                 </Toolbar>

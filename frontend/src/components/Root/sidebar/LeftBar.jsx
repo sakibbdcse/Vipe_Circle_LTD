@@ -1,12 +1,21 @@
 import React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { Drawer, List, Divider, IconButton, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+import Diversity1Icon from '@mui/icons-material/Diversity1';
+import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import StoreIcon from '@mui/icons-material/Store';
+import WorkIcon from '@mui/icons-material/Work';
+import AssistantIcon from '@mui/icons-material/Assistant';
+import SchoolIcon from '@mui/icons-material/School';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
+
 const openedMixin = (theme) => ({
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -36,7 +45,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     ...theme.mixins.toolbar,
 }));
 
-// Styled Drawer component with conditional styles for open and closed states
 const StyledDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         width: drawerWidth,
@@ -55,7 +63,17 @@ const StyledDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'ope
 );
 
 const LeftBar = ({ open, toggleDrawer }) => {
-    const theme = useTheme();
+    const leftItems = [
+        { title: 'Social', icon: <Diversity1Icon />, link: '/dashboard' },
+        { title: 'Entertainment', icon: <VideoLibraryIcon />, link: '/users' },
+        { title: 'Shop', icon: <StoreIcon />, link: '/products' },
+        { title: 'Jobs', icon: <WorkIcon />, link: '/orders' },
+        { title: 'AI', icon: <AssistantIcon />, link: '/categories' },
+        { title: 'Class', icon: <SchoolIcon />, link: '/brands' },
+        { title: 'Games', icon: <SportsEsportsIcon />, link: '/coupons' },
+        { title: 'Settings', icon: <SettingsIcon />, link: '/settings' },
+        { title: 'Logout', icon: <LogoutIcon />, link: '/logout' },
+    ];
 
     return (
         <StyledDrawer variant="permanent" open={open}>
@@ -65,11 +83,12 @@ const LeftBar = ({ open, toggleDrawer }) => {
                 </IconButton>
             </DrawerHeader>
             <Divider />
-            {/* List for sidebar items */}
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+                {leftItems.map((item, index) => (
+                    <ListItem key={index} disablePadding sx={{ display: 'block' }}>
                         <ListItemButton
+                            component={Link}
+                            to={item.link}
                             sx={{
                                 minHeight: 48,
                                 justifyContent: open ? 'initial' : 'center',
@@ -83,39 +102,14 @@ const LeftBar = ({ open, toggleDrawer }) => {
                                     justifyContent: 'center',
                                 }}
                             >
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                {item.icon}
                             </ListItemIcon>
-                            <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                            <ListItemText primary={item.title} sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
                 ))}
             </List>
             <Divider />
-            {/* Additional list for other items */}
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                        >
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}
-                            >
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
         </StyledDrawer>
     );
 };
