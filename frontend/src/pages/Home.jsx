@@ -1,5 +1,6 @@
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material';
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Home = () => {
     const categories = [
@@ -13,33 +14,52 @@ const Home = () => {
     ];
 
     return (
-        <Container sx={{ marginTop: 4 }}>
+        <Container sx={{ marginTop: '70px', textAlign: 'center' }}>
+            <Typography variant="h4" component="h2" sx={{ marginBottom: 4, fontWeight: 'bold' }}>
+                Explore Our Categories
+            </Typography>
             <Grid container spacing={4} justifyContent="center">
                 {categories.map((category, index) => (
                     <Grid item xs={12} sm={6} md={4} key={index}>
-                        <Card sx={{ maxWidth: 345 }}>
-                            <CardActionArea>
-                                <CardMedia
-                                    component="img"
-                                    height="140"
-                                    image={category.image}
-                                    alt={category.title}
-                                />
-                                <CardContent>
-                                    <Typography gutterBottom variant="h5" component="div">
-                                        {category.title}
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                        {category.description}
-                                    </Typography>
-                                </CardContent>
-                            </CardActionArea>
-                            <CardActions>
-                                <Button size="small" color="primary">
-                                    Explore
-                                </Button>
-                            </CardActions>
-                        </Card>
+                        {/* Add motion.div for animation */}
+                        <motion.div
+                            whileHover={{ scale: 1.05, boxShadow: '0px 10px 15px rgba(0, 0, 0, 0.3)' }}
+                            transition={{ type: 'spring', stiffness: 200 }}
+                        >
+                            <Card sx={{ maxWidth: 345, borderRadius: 3 }}>
+                                <CardActionArea>
+                                    <CardMedia
+                                        component="img"
+                                        height="160"
+                                        image={category.image}
+                                        alt={category.title}
+                                        sx={{ filter: 'brightness(90%)', borderRadius: '8px 8px 0 0' }}
+                                    />
+                                    <CardContent sx={{ backgroundColor: '#f9f9f9' }}>
+                                        <Typography gutterBottom variant="h5" component="div" sx={{ fontWeight: '600' }}>
+                                            {category.title}
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                            {category.description}
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                                <CardActions>
+                                    <Button
+                                        size="small"
+                                        variant="contained"
+                                        color="primary"
+                                        sx={{
+                                            textTransform: 'none',
+                                            borderRadius: 50,
+                                            padding: '5px 20px',
+                                        }}
+                                    >
+                                        Explore
+                                    </Button>
+                                </CardActions>
+                            </Card>
+                        </motion.div>
                     </Grid>
                 ))}
             </Grid>

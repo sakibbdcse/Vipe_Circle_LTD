@@ -64,7 +64,7 @@ const StyledDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'ope
 
 const LeftBar = ({ open, toggleDrawer }) => {
     const leftItems = [
-        { title: 'Social', icon: <Diversity1Icon />, link: '/dashboard' },
+        { title: 'Social', icon: <Diversity1Icon />, link: '/social' },
         { title: 'Entertainment', icon: <VideoLibraryIcon />, link: '/users' },
         { title: 'Shop', icon: <StoreIcon />, link: '/products' },
         { title: 'Jobs', icon: <WorkIcon />, link: '/orders' },
