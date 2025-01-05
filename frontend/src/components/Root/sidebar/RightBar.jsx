@@ -18,13 +18,10 @@ const RightBar = () => {
             variant="permanent"
             sx={{
                 width: drawerWidth,
-                position: 'fixed',
-                top: '65px',
                 height: `calc(100% - 65px)`,
                 '& .MuiDrawer-paper': {
                     width: drawerWidth,
                     boxSizing: 'border-box',
-                    top: '65px',
                     height: `calc(100% - 65px)`,
                 },
             }}
