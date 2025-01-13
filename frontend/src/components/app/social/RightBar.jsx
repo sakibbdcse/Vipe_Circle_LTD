@@ -1,9 +1,46 @@
-import React from 'react'
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import React from 'react';
+import ChatIcon from '@mui/icons-material/Chat';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import EventIcon from '@mui/icons-material/Event';
+import { Link } from 'react-router-dom';
 
 const RightBar = () => {
-    return (
-        <div>RightBar</div>
-    )
-}
+    const RightItems = [
+        { title: 'Chat', icon: <ChatIcon />, link: '/chat' },
+        { title: 'My Networek', icon: <ContactsIcon />, link: '/MyNetworek' },
+        { title: 'Add network', icon: <PersonAddIcon />, link: '/AddNetwork' },
+        { title: 'Events', icon: <EventIcon />, link: '/event' },
+    ];
 
-export default RightBar
+    return (
+        <List>
+            {RightItems.map((item, index) => (
+                <ListItem key={index} disablePadding>
+                    <ListItemButton
+                        component={Link}
+                        to={item.link}
+                        sx={{
+                            minHeight: 48,
+                            px: 2.5,
+                        }}
+                    >
+                        <ListItemIcon
+                            sx={{
+                                minWidth: 0,
+                                justifyContent: 'center',
+                                mr: 3
+                            }}
+                        >
+                            {item.icon}
+                        </ListItemIcon>
+                        <ListItemText primary={item.title} />
+                    </ListItemButton>
+                </ListItem>
+            ))}
+        </List>
+    );
+};
+
+export default RightBar;
