@@ -1,6 +1,6 @@
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import React from 'react';
-import ChatIcon from '@mui/icons-material/Chat';
+import MailIcon from '@mui/icons-material/Mail';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import EventIcon from '@mui/icons-material/Event';
@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const RightBar = () => {
     const RightItems = [
-        { title: 'Chat', icon: <ChatIcon />, link: '/chat' },
+        { title: 'Chat', icon: <MailIcon />, link: '/chat' },
         { title: 'My Networek', icon: <ContactsIcon />, link: '/MyNetworek' },
         { title: 'Add network', icon: <PersonAddIcon />, link: '/AddNetwork' },
         { title: 'Events', icon: <EventIcon />, link: '/event' },
