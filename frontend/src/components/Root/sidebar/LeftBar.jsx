@@ -10,6 +10,8 @@ import WorkIcon from '@mui/icons-material/Work';
 import AssistantIcon from '@mui/icons-material/Assistant';
 import SchoolIcon from '@mui/icons-material/School';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import LiveTvIcon from '@mui/icons-material/LiveTv';
+import AppsIcon from '@mui/icons-material/Apps';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
@@ -65,12 +67,14 @@ const StyledDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'ope
 const LeftBar = ({ open, toggleDrawer }) => {
     const leftItems = [
         { title: 'Social', icon: <Diversity1Icon />, link: '/social' },
-        { title: 'Entertainment', icon: <VideoLibraryIcon />, link: '/users' },
+        { title: 'Entertainment', icon: <VideoLibraryIcon />, link: '/entertainment' },
         { title: 'Shop', icon: <StoreIcon />, link: '/products' },
         { title: 'Jobs', icon: <WorkIcon />, link: '/orders' },
         { title: 'AI', icon: <AssistantIcon />, link: '/categories' },
         { title: 'Class', icon: <SchoolIcon />, link: '/brands' },
         { title: 'Games', icon: <SportsEsportsIcon />, link: '/coupons' },
+        { title: 'Live Tv', icon: <LiveTvIcon />, link: '/Livetv' },
+        { title: 'Software', icon: <AppsIcon />, link: '/software' },
         { title: 'Settings', icon: <SettingsIcon />, link: '/settings' },
         { title: 'Logout', icon: <LogoutIcon />, link: '/logout' },
     ];
