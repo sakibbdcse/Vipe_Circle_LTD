@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid } from '@mui/material';
 import RightBar from '../../../components/app/entertainment/RightBar';
+import Feed from '../../../components/app/entertainment/Feed/Feed';
 const Home = () => {
   return (
     <Grid container spacing={2} sx={{ marginTop: '70px', marginLeft:'70px' }}>
@@ -9,7 +10,7 @@ const Home = () => {
             </Grid>
             {/* Middle Section */}
             <Grid item xs={6}>
-                content
+                <Feed/>
             </Grid>
 
             {/* Right Section */}
