@@ -4,6 +4,7 @@ import RootLayout from '../layout/RootLayout';
 import Home from '../pages/Home';
 import SocialHome from '../pages/apps/social/Home';
 import EntertainmentHome  from '../pages/apps/entertainment/Home';
+import Shops from '../pages/apps/shop/Shop'
 import Register from '../test/Register';
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -12,6 +13,7 @@ export const router = createBrowserRouter(
             <Route path='social' element={<SocialHome />} />
             <Route path='entertainment' element={<EntertainmentHome />} />
             <Route path='register' element={<Register />} />
-        </Route >
+            <Route path='shop' element= {<Shops />} />
+            </Route >
     )
 )
