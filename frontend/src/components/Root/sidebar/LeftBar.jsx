@@ -68,7 +68,7 @@ const LeftBar = ({ open, toggleDrawer }) => {
     const leftItems = [
         { title: 'Social', icon: <Diversity1Icon />, link: '/social' },
         { title: 'Entertainment', icon: <VideoLibraryIcon />, link: '/entertainment' },
-        { title: 'Shop', icon: <StoreIcon />, link: '/products' },
+        { title: 'Shop', icon: <StoreIcon />, link: '/shop' },
         { title: 'Jobs', icon: <WorkIcon />, link: '/orders' },
         { title: 'AI', icon: <AssistantIcon />, link: '/categories' },
         { title: 'Class', icon: <SchoolIcon />, link: '/brands' },
